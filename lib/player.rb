@@ -1,10 +1,11 @@
-class PLAYER < PLAYGAME
+class Player < PlayGame
   def initialize
     choice()
   end
 
   def choice()
     puts (("Please choose a number on the grid"))
-    a = gets.chomp!
+    return (gets.chomp!)
   end
+
 end
