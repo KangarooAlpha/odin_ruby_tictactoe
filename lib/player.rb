@@ -3,9 +3,10 @@ class Player < PlayGame
     choice()
   end
 
-  def choice()
-    puts (("Please choose a number on the grid"))
-    return (gets.chomp!)
+  def choice
+    puts ("Please choose a number on the grid")
+    return ("1")
+    
   end
 
 end
