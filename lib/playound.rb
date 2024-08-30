@@ -8,7 +8,7 @@ class PlayRound < PlayGame
     drawBoard(@hChoice.h, "O")
     puts "The player chose #{@hChoice}"
     @cChoice = Computer.new(@@chosenNumbers)
-    drawBoard(@cChoice, "X")
+    drawBoard(@cChoice.ch, "X")
     puts "The computer chose #{@cChoice}"
   end
 

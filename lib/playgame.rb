@@ -14,17 +14,17 @@ class PlayGame
 
   def drawBoard(num = 0, sign = nil)
     if sign != nil && num != 0
-      @@lines = selectedBlock(num, sign, @@lines)
-      @@chosenNumbers.concat(num)
+      @@lines = selectedBlock(Integer(num), sign, @@lines)
+      @@chosenNumbers.push(Integer(num))
     end
-    @@lines.map {|row| puts row.to_s.split(",").join(" ")}
+    @@lines.map {|row| puts row.to_s.split(",").join(" ").gsub('""', '')}
     puts "done"
   end
 
   def selectedBlock(num, sign, lines)
     puts num
-    if lines.include?(num.to_i)
-      lines.map! do |row|
+    if lines.flatten.include?(num.to_i)
+    lines.map! do |row|
         row.each_with_index {|val, ind|row[ind] = sign if val == num}
       end
     else
