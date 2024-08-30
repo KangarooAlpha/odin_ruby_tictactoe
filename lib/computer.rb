@@ -1,4 +1,4 @@
-class Computer < PlayGame
+class Computer < PlayRound
   def initialize(chosenNumbers)
     choice(chosenNumbers)
   end

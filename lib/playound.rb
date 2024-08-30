@@ -5,9 +5,9 @@ class PlayRound < PlayGame
 
   def getChoices
     @hChoice = Player.new()
-    drawBoard(@hChoice, "O")
+    drawBoard(@hChoice.h, "O")
     puts "The player chose #{@hChoice}"
-    @cChoice = Computer.new(@chosenNumbers)
+    @cChoice = Computer.new(@@chosenNumbers)
     drawBoard(@cChoice, "X")
     puts "The computer chose #{@cChoice}"
   end

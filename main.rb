@@ -1,7 +1,8 @@
 require_relative 'lib/playgame'
+require_relative 'lib/playound'
 require_relative 'lib/computer'
 require_relative 'lib/player'
-require_relative 'lib/playound'
+
 
 while (true)
   puts "Would you like to play a game of tic tac toe? (y/n)"

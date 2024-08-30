@@ -1,6 +1,6 @@
 class PlayGame
   def initialize(lines)
-    @lines = lines
+    @@lines = lines
     @@chosenNumbers = []
     @@gamesPlayed = 0
     drawBoard()
@@ -14,15 +14,16 @@ class PlayGame
 
   def drawBoard(num = 0, sign = nil)
     if sign != nil && num != 0
-      @lines = selectedBlock(num, sign, @@lines)
+      @@lines = selectedBlock(num, sign, @@lines)
       @@chosenNumbers.concat(num)
     end
-    @lines.map {|row| puts row.to_s.split(",").join(" ")}
+    @@lines.map {|row| puts row.to_s.split(",").join(" ")}
     puts "done"
   end
 
   def selectedBlock(num, sign, lines)
-    if lines.include?(num)
+    puts num
+    if lines.include?(num.to_i)
       lines.map! do |row|
         row.each_with_index {|val, ind|row[ind] = sign if val == num}
       end
