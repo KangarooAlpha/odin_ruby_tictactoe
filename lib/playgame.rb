@@ -1,11 +1,16 @@
 class PlayGame
-  def initialize(lines)
-    @@lines = lines
+  def initialize
+    @@lines = [[1,2,3],[4,5,6],[7,8,9]]
     @@chosenNumbers = []
     @@gamesPlayed = 0
+    @@InARow = [
+    [1,2,3], [4,5,6], [7,8,9],
+    [1,4,7], [2,5,8], [3,6,9],
+    [1,5,9], [3,5,7]
+    ]
     drawBoard()
     while (@@chosenNumbers.length < 10)
-      debugger
+      #debugger
 
       PlayRound.new()
     end
@@ -17,7 +22,7 @@ class PlayGame
       @@lines = selectedBlock(Integer(num), sign, @@lines)
       @@chosenNumbers.push(Integer(num))
     end
-    @@lines.map {|row| puts row.to_s.split(",").join(" ").gsub('""', '')}
+    @@lines.map {|row| puts row.to_s.gsub(' "" ', '').split(",").join(" ")}
     puts "done"
   end
 
@@ -35,6 +40,10 @@ class PlayGame
 
   def displayMessage(string)
     puts string
+  end
+
+  def checkWinner(hNums, cNums)
+    
   end
 
   def self.keepScore

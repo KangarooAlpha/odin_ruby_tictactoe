@@ -1,4 +1,4 @@
-class Player < PlayRound
+class Player < PlayGame
   attr_reader :h
   def initialize
     choice()
@@ -6,8 +6,8 @@ class Player < PlayRound
   end
 
   def choice
-    puts ("Please choose a number on the grid")
-    @h = ("1")
+    displayMessage("Please choose a number on the grid")
+    @h = gets
     return @h
   end
 

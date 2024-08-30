@@ -1,15 +1,22 @@
 class PlayRound < PlayGame
+  attr_accessor :hNumbers, :cNumbers
   def initialize
     getChoices()
   end
 
   def getChoices
+    @hNumbers = []
+    @cNumbers = []
     @hChoice = Player.new()
-    drawBoard(@hChoice.h, "O")
-    puts "The player chose #{@hChoice}"
+    @hNum = Integer(@hChoice.h)
+    drawBoard(@hNum, "O")
+    displayMessage("The player chose #{@hNum}")
+    @@hNumbers.push(@hNum)
     @cChoice = Computer.new(@@chosenNumbers)
-    drawBoard(@cChoice.ch, "X")
-    puts "The computer chose #{@cChoice}"
+    @cNum = @cChoice.ch
+    drawBoard(@cNum, "X")
+    displayMessage("The computer chose #{@cNum}")
+    @cNumbers.push(@cNum)
   end
 
 end
