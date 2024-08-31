@@ -2,16 +2,21 @@ class PlayGame
   def initialize
     @@lines = [[1,2,3],[4,5,6],[7,8,9]]
     @@chosenNumbers = []
-    @@gamesPlayed = 0
+    @@gamesPlayed += 1
     @@InARow = [
     [1,2,3], [4,5,6], [7,8,9],
     [1,4,7], [2,5,8], [3,6,9],
     [1,5,9], [3,5,7]
     ]
+    @@winner = nil
     drawBoard()
+    catch :game do
     while (@@chosenNumbers.length < 10)
       #debugger
-
+      if (winner)
+        displayMessage("The winner of this match is #{winner}!")
+        throw :game
+      end
       PlayRound.new()
     end
 
@@ -42,8 +47,12 @@ class PlayGame
     puts string
   end
 
-  def checkWinner(hNums, cNums)
-    
+  def checkHuman(hNums)
+    return @@InARow.any? {|set| set.all?{|num| hNums.include?(num)}}
+  end
+
+  def checkComputer(cNums)
+    return @@InARow.any? {|set| set.all?{|num| cNums.include?(num)}}
   end
 
   def self.keepScore
