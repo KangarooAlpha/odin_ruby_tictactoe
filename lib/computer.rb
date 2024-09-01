@@ -1,4 +1,4 @@
-class Computer < PlayRound
+class Computer < PlayGame
 
   attr_reader :ch
   def initialize(chosenNumbers)

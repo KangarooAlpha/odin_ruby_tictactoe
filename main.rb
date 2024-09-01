@@ -9,6 +9,6 @@ while (true)
   perm = "y"
   perm.downcase!
   if (perm == "y")
-    PlayGame.new([[1,2,3],[4,5,6],[7,8,9]])
+    PlayGame.new
   end
 end

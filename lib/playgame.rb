@@ -2,7 +2,7 @@ class PlayGame
   def initialize
     @@lines = [[1,2,3],[4,5,6],[7,8,9]]
     @@chosenNumbers = []
-    @@gamesPlayed += 1
+    #@@gamesPlayed += 1
     @@InARow = [
     [1,2,3], [4,5,6], [7,8,9],
     [1,4,7], [2,5,8], [3,6,9],
@@ -13,12 +13,13 @@ class PlayGame
     catch :game do
     while (@@chosenNumbers.length < 10)
       #debugger
-      if (winner)
-        displayMessage("The winner of this match is #{winner}!")
+      if (@winner != nil)
+        displayMessage("The winner of this match is #{@winner}!")
         throw :game
       end
       PlayRound.new()
     end
+  end
 
   end
 
@@ -28,18 +29,14 @@ class PlayGame
       @@chosenNumbers.push(Integer(num))
     end
     @@lines.map {|row| puts row.to_s.gsub(' "" ', '').split(",").join(" ")}
-    puts "done"
   end
 
   def selectedBlock(num, sign, lines)
     puts num
     if lines.flatten.include?(num.to_i)
-    lines.map! do |row|
+      lines.map! do |row|
         row.each_with_index {|val, ind|row[ind] = sign if val == num}
       end
-    else
-      displayMessage("Please choose a different number")
-      
     end
   end
 
@@ -48,11 +45,15 @@ class PlayGame
   end
 
   def checkHuman(hNums)
-    return @@InARow.any? {|set| set.all?{|num| hNums.include?(num)}}
+    if @@InARow.any? {|set| set.all?{|num| hNums.include?(num)}}
+      @@winner = "Player"
+    end
   end
 
   def checkComputer(cNums)
-    return @@InARow.any? {|set| set.all?{|num| cNums.include?(num)}}
+    if @@InARow.any? {|set| set.all?{|num| cNums.include?(num)}}
+      @@winner = "Computer"
+    end
   end
 
   def self.keepScore
