@@ -2,6 +2,8 @@ class PlayGame
   def initialize
     @@lines = [[1,2,3],[4,5,6],[7,8,9]]
     @@chosenNumbers = []
+    @@hNumbers = []
+    @@cNumbers = []
     #@@gamesPlayed += 1
     @@InARow = [
     [1,2,3], [4,5,6], [7,8,9],
@@ -13,11 +15,11 @@ class PlayGame
     catch :game do
     while (@@chosenNumbers.length < 10)
       #debugger
-      if (@winner != nil)
+      if (@@winner != nil)
         displayMessage("The winner of this match is #{@winner}!")
         throw :game
       end
-      PlayRound.new()
+      PlayRound.new(@@hNumbers, @@cNumbers)
     end
   end
 

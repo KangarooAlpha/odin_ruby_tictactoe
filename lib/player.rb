@@ -9,8 +9,8 @@ class Player < PlayRound
 
   def choice
     displayMessage("Please choose a number on the grid")
-    @h = 1
-    debugger
+    @h = gets.chomp!
+    #debugger
     if (checkValid(@h) == false)
       @h = choice()
     end

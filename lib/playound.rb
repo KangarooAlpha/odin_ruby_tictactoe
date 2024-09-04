@@ -1,12 +1,13 @@
 class PlayRound < PlayGame
   attr_accessor :hNumbers, :cNumbers
-  def initialize
+  def initialize(hNumbers,cNumbers)
+    @hNumbers = hNumbers
+    @cNumbers = cNumbers
     getChoices()
   end
 
   def getChoices
-    @hNumbers = []
-    @cNumbers = []
+
     @hChoice = Player.new(@hNumbers,@cNumbers)
     @hNum = Integer(@hChoice.h)
     drawBoard(@hNum, "O")
